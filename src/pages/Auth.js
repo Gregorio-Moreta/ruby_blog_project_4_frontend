@@ -1,7 +1,10 @@
 import React from "react";
 
 const Auth = (props) => {
-    return <h1>Auths Component</h1>;
+
+    const type = props.match.params.form
+
+    return <h1>{type}</h1>;
 };
 
 export default Auth;

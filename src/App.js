@@ -9,6 +9,21 @@ import { Route, Switch } from "react-router-dom";
 //import { GlobalState } from "./GlobalState";
 
 function App(props) {
+
+//  Styling Objects
+
+//  State & variables
+
+//  API call
+//const url = "https://ruby-react-blog-project-4.herokuapp.com/posts"
+
+//  State to hold list of posts
+//const [posts, setPosts] = useState([])
+
+//  Function
+
+//  useEffect
+
   return (
     <div>
       <h1>Blog App</h1>
@@ -22,7 +37,7 @@ function App(props) {
         />
           <Route
           exact 
-          path= "/auth"
+          path= "/auth/:form"
           render = {
             (routerProps) => <Auth {...routerProps} Auth={Auth}/> 
           }

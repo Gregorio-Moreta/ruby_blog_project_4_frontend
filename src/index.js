@@ -3,17 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 //  Import the BrowserRouter component and rename it Router
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { AppState } from "./AppState";
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   //  Wrap our App component inside router so App and children can use router
   //  Pass the App component into Route to give it access to router props
-  <Router>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-  </Router>,
+  <AppState>
+    <Router>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Router>
+  </AppState>,
   document.getElementById('root')
 );
 
