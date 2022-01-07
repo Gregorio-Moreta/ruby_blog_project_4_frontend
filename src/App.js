@@ -2,11 +2,12 @@
 import Auth from "./pages/Auth";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import Nav from "./components/nav";
 //  Import React and hooks
 //import React, { useState, useEffect } from "react";
 //  Import components from React Router
 import { Route, Switch } from "react-router-dom";
-//import { GlobalState } from "./GlobalState";
+//import { AppState } from "./AppState";
 
 function App(props) {
 
@@ -26,6 +27,7 @@ function App(props) {
 
   return (
     <div>
+      <Nav />
       <h1>Blog App</h1>
       <Switch>
         <Route
