@@ -1,26 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import Auth from "./pages/Auth";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+//  Import React and hooks
+//import React, { useState, useEffect } from "react";
+//  Import components from React Router
+import { Route, Switch } from "react-router-dom";
+//import { GlobalState } from "./GlobalState";
+
+function App(props) {
+
+//  Styling Objects
+
+//  State & variables
+
+//  API call
+//const url = "https://ruby-react-blog-project-4.herokuapp.com/posts"
+
+//  State to hold list of posts
+//const [posts, setPosts] = useState([])
+
+//  Function
+
+//  useEffect
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          just a minor change to make a commit
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Blog App</h1>
+      <Switch>
+        <Route
+          exact 
+          path= "/"
+          render = {
+            (routerProps) => <Home {...routerProps} Home={Home}/> 
+        }
+        />
+          <Route
+          exact 
+          path= "/auth/:form"
+          render = {
+            (routerProps) => <Auth {...routerProps} Auth={Auth}/> 
+          }
+        />
+          <Route
+          exact 
+          path= "/home"
+          render = {
+            (routerProps) => <Home {...routerProps} Home/> 
+          }
+        />
+          <Route
+          exact 
+          path= "/dashboard"
+          render = {
+            (routerProps) => <Dashboard {...routerProps} Dashboard={Dashboard}/> 
+        }
+        />
+      </Switch>
     </div>
   );
 }
