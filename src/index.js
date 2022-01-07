@@ -9,13 +9,13 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   //  Wrap our App component inside router so App and children can use router
   //  Pass the App component into Route to give it access to router props
-  <GlobalState>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>,
-  </GlobalState>,
+  <Router>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+  </Router>,
   document.getElementById('root')
-  );
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
