@@ -4,19 +4,68 @@ import { useContext, useReducer } from "react"
 //  Initial State
 
 const initialState = {
-     url: "https://ruby-react-blog-project-4.herokuapp.com"
+     url: "https://ruby-react-blog-project-4.herokuapp.com",
+     token: null,
+     username: null,
 }
 
 //  Reducer Function - big function that handles all situations
 //  action = {type: ", payload: ---"}
 const reducer = (state, action) => {
-//   Switch is based on action type function will do different things and change state
-    switch(action.type){
-        default: 
+    let newState
+    switch (action.type) {
+        case "auth":
+            newState = { ...state, ...action.payload }
+            return newState
+            break
+        default:
             return state
+            break
     }
-
 }
+
+
+//   Switch is based on action type function will do different things and change state
+    // switch(action.type){
+    //     case "signup":
+    //         fetch(state.url + "/users/", {
+    //             method: "post",
+    //                 headers: {
+    //                     "content-type": "application/json" 
+    //                 },
+    //                 body: JSON.stringify(action.payload)
+    //                 })
+    //     .then((response) => response.json())
+    //     .then((user) => {
+    //         return {
+    //             ...state,
+    //             token: user.token,
+    //             username: user.username,
+    //         }
+    // })
+    // break
+    // case "login":
+    //     fetch(state.url + "/login/", {
+    //         method: "post",
+    //             headers: {
+    //                 "content-type": "application/json" 
+    //             },
+    //             body: JSON.stringify(action.payload)
+    //             })
+    // .then((response) => response.json())
+    // .then((user) => {
+    //     return {
+    //         ...state,
+    //         token: user.token,
+    //         username: user.username
+    //         }
+    //     })
+        // break
+        // default: 
+        //     return state
+    //}
+
+// }
 
 //  AppContext - creates a context object - object that provides the state to everything
 const AppContext = React.createContext(null)
