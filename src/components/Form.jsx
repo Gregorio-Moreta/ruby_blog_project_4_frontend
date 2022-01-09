@@ -20,7 +20,7 @@ const Form = (props) => {
             }).then((response) => response.json())
         },
         edit: () => {
-            return fetch(state.url + "/posts/" + state.edit.id, {
+            return fetch(state.url + "/posts/" + state.edit.id , {
                 method: "put",
                 headers: {
                     "Content-Type": "application/json",
