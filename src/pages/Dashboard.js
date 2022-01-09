@@ -13,6 +13,7 @@ const Dashboard = (props) => {
         const response = await fetch(url + "/posts/", {
             method: "get",
             headers: {
+                "Content-Type": "application/json",
                 Authorization: "bearer " + token
             }
         })

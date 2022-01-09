@@ -37,7 +37,7 @@ const reducer = (state, action) => {
             break
         case "getPosts":
             console.log(action.payload)
-            newState = {...state, post: action.payload }
+            newState = {...state, posts: action.payload }
             return newState
             break
         default:
