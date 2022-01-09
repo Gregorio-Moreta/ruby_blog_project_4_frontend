@@ -7,10 +7,11 @@ import Nav from "./components/nav";
 //import React, { useState, useEffect } from "react";
 //  Import components from React Router
 import { Route, Switch } from "react-router-dom";
-//import { AppState } from "./AppState";
+import { useAppState } from "./AppState";
+import React from "react";
 
 
-function App(props) {
+export function App(props) {
 
 //  Styling Objects
 
@@ -26,41 +27,50 @@ function App(props) {
 
 //  useEffect
 
+  const { state, dispatch } = useAppState()
+  React.useState(() => {
+    const auth = JSON.parse(window.localStorage.getItem("auth"))
+    if (auth) {
+      dispatch({ type: "auth", payload: auth })
+      props.history.push("/dashboard")
+    } else {
+      props.history.push("/")
+    }
+  }, [])
+
   return (
-    <div>
-      <Nav />
-      <h1>Blog App</h1>
-      <Switch>
-        <Route
-          exact 
-          path= "/"
-          render = {
-            (routerProps) => <Home {...routerProps} Home={Home}/> 
-        }
-        />
+    <>
+      <Route path="/" component={Nav} />
+      <div>
+        <Switch>
           <Route
-          exact 
-          path= "/auth/:form"
-          render = {
-            (routerProps) => <Auth {...routerProps} Auth={Auth}/> 
-          }
-        />
-          <Route
-          exact 
-          path= "/home"
-          render = {
-            (routerProps) => <Home {...routerProps} Home/> 
-          }
-        />
-          <Route
-          exact 
-          path= "/dashboard"
-          render = {
-            (routerProps) => <Dashboard {...routerProps} Dashboard={Dashboard}/> 
-        }
-        />
-      </Switch>
-    </div>
+            exact 
+            path= "/"
+            render = {
+              (routerProps) => <Home {...routerProps} Home={Home}/> 
+            }
+            />
+            <Route 
+            path= "/auth/:form"
+            render = {
+              (routerProps) => <Auth {...routerProps} Auth={Auth}/> 
+            }
+            />
+            <Route 
+            path= "/home"
+            render = {
+              (routerProps) => <Home {...routerProps} Home/> 
+            }
+            />
+            <Route 
+            path= "/dashboard"
+            render = {
+              (routerProps) => <Dashboard {...routerProps} Dashboard={Dashboard}/> 
+            }
+            />
+        </Switch>
+      </div>
+    </>
   );
 }
 

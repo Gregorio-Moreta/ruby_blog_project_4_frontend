@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 //  Import the BrowserRouter component and rename it Router
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AppState } from "./AppState";
 import reportWebVitals from './reportWebVitals';
 
@@ -13,7 +13,7 @@ ReactDOM.render(
   <AppState>
     <Router>
       <React.StrictMode>
-        <App />
+        <Route path="/" component={App} />
       </React.StrictMode>
     </Router>
   </AppState>,

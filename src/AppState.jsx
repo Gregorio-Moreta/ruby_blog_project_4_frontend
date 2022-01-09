@@ -7,6 +7,18 @@ const initialState = {
      url: "https://ruby-react-blog-project-4.herokuapp.com",
      token: null,
      username: null,
+     posts: null,
+     new: {
+         title: "",
+         author: "",
+         body: ""
+     },
+     edit: {
+         id: 0,
+         title: "",
+         author: "",
+         body: ""
+    }
 }
 
 //  Reducer Function - big function that handles all situations
@@ -16,6 +28,16 @@ const reducer = (state, action) => {
     switch (action.type) {
         case "auth":
             newState = { ...state, ...action.payload }
+            return newState
+            break
+        case "logout":
+            newState = {...state, token: null, username: null}
+            window.localStorage.removeItem("auth")
+            return newState
+            break
+        case "getPosts":
+            console.log(action.payload)
+            newState = {...state, post: action.payload }
             return newState
             break
         default:
@@ -80,9 +102,11 @@ export const AppState = (props) => {
 //  InitialState becomes the state and the dispatch function is passed an action which is then run by the reducer function
 const [state, dispatch] = useReducer(reducer, initialState); 
 
-    return <AppContext.Provider value={{state, dispatch}}>
+    return (
+    <AppContext.Provider value={{state, dispatch}}>
         {props.children}
     </AppContext.Provider>
+    )
 }
 
 //  useAppState hook
