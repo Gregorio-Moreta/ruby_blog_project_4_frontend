@@ -43,6 +43,10 @@ const Dashboard = (props) => {
                     <h2>{post.title}</h2>
                     <h3>{post.author}</h3>
                     <h4>{post.body}</h4>
+                    <button onClick={() => { 
+                     dispatch({type: "select", payload: post})
+                        props.history.push("/dashboard/edit")
+                    }}>edit posts</button>
                 </div>
             ))}
         </ul>
