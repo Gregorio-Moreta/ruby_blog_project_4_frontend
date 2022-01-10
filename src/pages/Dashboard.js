@@ -46,7 +46,16 @@ const Dashboard = (props) => {
                     <button onClick={() => { 
                      dispatch({type: "select", payload: post})
                         props.history.push("/dashboard/edit")
-                    }}>edit posts</button>
+                    }}>Edit Post</button>
+                    <button onClick={() => 
+                        fetch(url + "/posts/" + post.id,  {
+                            method: "delete",
+                            headers: {
+                                Authorization: "bearer " + token
+                            }
+                        })
+                        .then(() => getPosts())
+                    }>Delete Post</button>
                 </div>
             ))}
         </ul>
